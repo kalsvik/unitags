@@ -19,7 +19,7 @@ cd target
 This will start a webserver at :4849
 
 ## Getting data from the server
-To get JSON data from the server, you must send a post request to `:4849/json` with the content of the body being the password you assigned in the `password.txt` file.
+To get an html file from the server, you must send a post request to `:4849/json` (yeah, I know the name doesn't make sense, but I have a plane to catch tomorrow) with the content of the body being the password you assigned in the `password.txt` file.
 
 # Attribution
 I nicked how the server gets the Find My data from another project called AirTagsAnywhere, which you can find [here](https://github.com/DylanAkp/AirtagsAnywhere). 
