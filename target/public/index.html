@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<div style="width:100%;display:flex;" id="buttons"></div>
+<div id="map"></div>
+<script>
+  let data = JSON.parse(`øødataøø`)
+
+  var map = L.map('map')
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 20,
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+  }).addTo(map);
+
+  setTimeout(function () {map.invalidateSize()}, 400);
+
+  data.forEach(r => {
+    console.log(r)
+
+    if (r.Location.Latitude == 0 && r.Location.Longitude == 0) {
+      console.log("No location could be found for " + r.Name + ". Skipping...")
+      return
+    }
+
+    var marker = L.marker([r.Location.Latitude, r.Location.Longitude], {
+      title: r.Name
+    }).addTo(map);
+
+    var button = document.createElement("button");
+
+    button.textContent = r.Name;
+    button.id = r.Name;
+
+    button.onclick = () => {
+      marker.openPopup();
+    }
+
+    var buttons = document.getElementById("buttons");
+
+    buttons.appendChild(button);
+
+    let date = new Date(r.Location.TimeStamp).toString()
+
+    marker.bindPopup("<b>" + r.Name + " " + r.Role.Emoji + "</b><br>" + r.Address.FormattedAddressLines + "<br>Last Update: " + date).openPopup();
+  })
+
+  if (data.length > 1) {
+    map.setView([data[0].Location.Latitude, data[0].Location.Longitude], 8)
+  }
+
+</script>
+
+<style>
+  #map {
+    width: 100vw;
+    height: 70vh;
+  }
+</style>
