@@ -27,4 +27,4 @@ I nicked how the server gets the Find My data from another project called AirTag
 This project is licensed under the MIT license.
 
 # Footnotes
-I mostly just made this because I wanted to be able to keep my airbags after moving to Android, and I had an old MacBook lying around that wasn't doing anything, so I made this. I don't expect anybody to get any use out of this except for me, but in the rare case you find this to be a helpful project/tool/whatever, any contributions are appreciated.
+I mostly just made this because I wanted to be able to keep my airtags after moving to Android, and I had an old MacBook lying around that wasn't doing anything, so I made this. I don't expect anybody to get any use out of this except for me, but in the rare case you find this to be a helpful project/tool/whatever, any contributions are appreciated.
